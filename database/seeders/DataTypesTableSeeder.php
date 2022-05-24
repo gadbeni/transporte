@@ -73,6 +73,24 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2021-06-02 17:55:31',
                 'updated_at' => '2021-06-02 17:55:31',
             ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'permissions',
+                'slug' => 'permissions',
+                'display_name_singular' => 'Permiso',
+                'display_name_plural' => 'Permisos',
+                'icon' => 'voyager-list',
+                'model_name' => 'App\\Models\\Permission',
+                'policy_name' => NULL,
+                'controller' => NULL,
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 0,
+                'details' => '{"order_column":"table_name","order_display_column":"table_name","order_direction":"asc","default_search_key":null}',
+                'created_at' => '2022-05-24 15:21:20',
+                'updated_at' => '2022-05-24 15:21:20',
+            ),
         ));
         
         
