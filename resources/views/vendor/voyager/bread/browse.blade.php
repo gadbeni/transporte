@@ -4,35 +4,41 @@
 
 @section('page_header')
     <div class="container-fluid">
-        <h1 class="page-title">
-            <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
-        </h1>
-        @can('add', app($dataType->model_name))
-            <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
-                <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
-            </a>
-        @endcan
-        @can('delete', app($dataType->model_name))
-            @include('voyager::partials.bulk-delete')
-        @endcan
-        {{-- @can('edit', app($dataType->model_name))
-            @if(!empty($dataType->order_column) && !empty($dataType->order_display_column))
-                <a href="{{ route('voyager.'.$dataType->slug.'.order') }}" class="btn btn-primary btn-add-new">
-                    <i class="voyager-list"></i> <span>{{ __('voyager::bread.order') }}</span>
-                </a>
-            @endif
-        @endcan --}}
-        @can('delete', app($dataType->model_name))
-            @if($usesSoftDeletes)
-                <input type="checkbox" @if ($showSoftDeleted) checked @endif id="show_soft_deletes" data-toggle="toggle" data-on="{{ __('voyager::bread.soft_deletes_off') }}" data-off="{{ __('voyager::bread.soft_deletes_on') }}">
-            @endif
-        @endcan
-        @foreach($actions as $action)
-            @if (method_exists($action, 'massAction'))
-                @include('voyager::bread.partials.actions', ['action' => $action, 'data' => null])
-            @endif
-        @endforeach
-        @include('voyager::multilingual.language-selector')
+        <div class="row">
+            <div class="col-md-4">
+                <h1 class="page-title">
+                    <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
+                </h1>
+            </div>
+            <div class="col-md-8 text-right" style="padding-top: 10px">
+                @can('add', app($dataType->model_name))
+                    <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
+                        <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
+                    </a>
+                @endcan
+                @can('delete', app($dataType->model_name))
+                    @include('voyager::partials.bulk-delete')
+                @endcan
+                {{-- @can('edit', app($dataType->model_name))
+                    @if(!empty($dataType->order_column) && !empty($dataType->order_display_column))
+                        <a href="{{ route('voyager.'.$dataType->slug.'.order') }}" class="btn btn-primary btn-add-new">
+                            <i class="voyager-list"></i> <span>{{ __('voyager::bread.order') }}</span>
+                        </a>
+                    @endif
+                @endcan --}}
+                @can('delete', app($dataType->model_name))
+                    @if($usesSoftDeletes)
+                        <input type="checkbox" @if ($showSoftDeleted) checked @endif id="show_soft_deletes" data-toggle="toggle" data-on="{{ __('voyager::bread.soft_deletes_off') }}" data-off="{{ __('voyager::bread.soft_deletes_on') }}">
+                    @endif
+                @endcan
+                @foreach($actions as $action)
+                    @if (method_exists($action, 'massAction'))
+                        @include('voyager::bread.partials.actions', ['action' => $action, 'data' => null])
+                    @endif
+                @endforeach
+                @include('voyager::multilingual.language-selector')
+            </div>
+        </div>
     </div>
 @stop
 
@@ -122,7 +128,7 @@
                                                 @if (isset($row->details->view))
                                                     @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $data->{$row->field}, 'action' => 'browse', 'view' => 'browse', 'options' => $row->details])
                                                 @elseif($row->type == 'image')
-                                                    <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
+                                                    <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:40px">
                                                 @elseif($row->type == 'relationship')
                                                     @include('voyager::formfields.relationship', ['view' => 'browse','options' => $row->details])
                                                 @elseif($row->type == 'select_multiple')
@@ -163,7 +169,8 @@
                                                     @if ( property_exists($row->details, 'format') && !is_null($data->{$row->field}) )
                                                         {{ \Carbon\Carbon::parse($data->{$row->field})->formatLocalized($row->details->format) }}
                                                     @else
-                                                        {{ $data->{$row->field} }}
+                                                        {{ date('d/m/Y H:i', strtotime($data->{$row->field})) }} <br>
+                                                        <small>{{ \Carbon\Carbon::parse($data->{$row->field})->diffForHumans() }}</small>
                                                     @endif
                                                 @elseif($row->type == 'checkbox')
                                                     @if(property_exists($row->details, 'on') && property_exists($row->details, 'off'))

@@ -5,7 +5,7 @@
 @section('page_header')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <h1 class="page-title">
                     <i class="voyager-basket"></i> Registros
                 </h1>
@@ -13,7 +13,7 @@
                     <i class="voyager-plus"></i> <span>Crear</span>
                 </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-8 text-right" style="padding-top: 10px">
 
             </div>
         </div>
@@ -64,18 +64,9 @@
 @stop
 
 @section('javascript')
-    <script src="{{ url('js/main.js') }}"></script>
     <script>
         $(document).ready(function() {
-            let columns = [
-                { data: 'id', title: 'id' },
-                { data: 'cliente', title: 'Cliente' },
-                { data: 'detalle', title: 'Detalle' },
-                { data: 'fecha', title: 'Fecha' },
-                { data: 'total', title: 'Total' },
-                { data: 'action', title: 'Acciones', orderable: false, searchable: false },
-            ]
-            // customDataTable("{{ url('admin/ventas/ajax/list') }}/", columns);
+
         });
 
         function deleteItem(id){

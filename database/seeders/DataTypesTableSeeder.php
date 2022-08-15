@@ -30,12 +30,12 @@ class DataTypesTableSeeder extends Seeder
                 'model_name' => 'TCG\\Voyager\\Models\\User',
                 'policy_name' => 'TCG\\Voyager\\Policies\\UserPolicy',
                 'controller' => 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController',
-                'description' => '',
+                'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2021-06-02 17:55:30',
-                'updated_at' => '2021-06-02 17:55:30',
+                'updated_at' => '2022-08-14 23:31:50',
             ),
             1 => 
             array (
@@ -66,12 +66,12 @@ class DataTypesTableSeeder extends Seeder
                 'model_name' => 'TCG\\Voyager\\Models\\Role',
                 'policy_name' => NULL,
                 'controller' => 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController',
-                'description' => '',
+                'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2021-06-02 17:55:31',
-                'updated_at' => '2021-06-02 17:55:31',
+                'updated_at' => '2022-08-14 23:40:05',
             ),
             3 => 
             array (
