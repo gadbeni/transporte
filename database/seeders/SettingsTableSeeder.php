@@ -129,6 +129,17 @@ class SettingsTableSeeder extends Seeder
                 'order' => 5,
                 'group' => 'Admin',
             ),
+            10 => 
+            array (
+                'id' => 11,
+                'key' => 'system.enabled',
+                'display_name' => 'Enabled',
+                'value' => '1',
+                'details' => NULL,
+                'type' => 'checkbox',
+                'order' => 6,
+                'group' => 'System',
+            ),
         ));
         
         

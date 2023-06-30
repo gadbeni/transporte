@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use File;
 use TCG\Voyager\VoyagerServiceProvider;
+use Illuminate\Database\Seeder\VoyagerDatabaseSeeder;
 
 class install extends Command
 {
@@ -41,7 +42,7 @@ class install extends Command
     {
         $this->call('key:generate');
         $this->call('migrate:fresh');
-        $this->call('db:seed');
+        $this->call('db:seed', ['--class' => 'TemplateSeeder']);
         $this->call('storage:link');
         $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class, '--tag' => ['config', 'voyager_avatar']]);
         $this->info('Gracias por instalar LaravelTemplate');

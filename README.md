@@ -4,7 +4,7 @@
 
 ## Instalación
 ```
-sudo apt install php7.4-mbstring php7.4-intl php7.4-dom php7.4-gd php7.4-xml php7.4-mbstring php7.4-zip php7.4-mysql
+sudo apt install php8.0-mbstring php8.0-intl php8.0-dom php8.0-gd php8.0-xml php8.0-zip php8.0-mysql
 composer install
 cp .env.example .env
 php artisan template:install

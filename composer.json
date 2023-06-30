@@ -12,18 +12,18 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.40",
+        "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
         "laraveles/spanish": "^1.5",
         "orangehill/iseed": "^3.0",
-        "tcg/voyager": "^1.4"
+        "tcg/voyager": "^1.6"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
+        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
+        "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
@@ -65,7 +65,12 @@
     "repositories": {
         "hooks": {
             "type": "composer",
-            "url": "https://larapack.io"
+            "url": "https://larapack.io",
+            "options": {
+                "ssl": {
+                    "verify_peer": false
+                }
+            }
         }
     }
 }
