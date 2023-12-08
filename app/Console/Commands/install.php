@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use File;
 use TCG\Voyager\VoyagerServiceProvider;
-use Illuminate\Database\Seeder\VoyagerDatabaseSeeder;
+use Illuminate\Support\Facades\DB;
 
 class install extends Command
 {
@@ -14,14 +14,15 @@ class install extends Command
      *
      * @var string
      */
-    protected $signature = 'template:install';
+    protected $signature = 'template:install
+                            {--r|reset : Reset database}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Laravel template';
+    protected $description = 'Install LaravelTemplate';
 
     /**
      * Create a new command instance.
@@ -40,11 +41,33 @@ class install extends Command
      */
     public function handle()
     {
-        $this->call('key:generate');
-        $this->call('migrate:fresh');
-        $this->call('db:seed', ['--class' => 'TemplateSeeder']);
-        $this->call('storage:link');
-        $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class, '--tag' => ['config', 'voyager_avatar']]);
-        $this->info('Gracias por instalar LaravelTemplate');
+        if($this->option('reset')){
+            if ($this->confirm('Esto eliminará todos los datos, deseas continuar?', false)) {
+                $this->call('migrate:fresh');
+                $this->call('db:seed', ['--class' => 'TemplateSeeder']);
+                $this->info('La base de datos de LaravelTemplate ha sido reiniciada ;)');
+            }else {
+                $this->info('Acción cancelada');
+            }
+        }else{
+            
+            $empty_database = false;
+            try {
+                DB::table('users')->get();
+            } catch (\Throwable $th) {
+                $empty_database = true;
+            }
+
+            if($empty_database){
+                $this->call('key:generate');
+                $this->call('migrate');
+                $this->call('db:seed', ['--class' => 'TemplateSeeder']);
+                $this->call('storage:link');
+                $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class, '--tag' => ['config', 'voyager_avatar']]);
+                $this->info('Gracias por instalar LaravelTemplate');
+            }else{
+                $this->error('La base de datos de LaravelTemplate ya está instalada.');
+            }
+        }
     }
 }

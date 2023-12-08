@@ -21,8 +21,11 @@ Route::get('/', function () {
     return redirect('admin');
 });
 
+Route::get('maintenance', function () {
+    return view('errors.maintenance');
+})->name('errors.maintenance');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], function () {
     Voyager::routes();
 });
 
