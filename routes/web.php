@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\voyager\organizationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::get('maintenance', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], function () {
     Voyager::routes();
+
+    Route::controller(organizationsController::class)->group(function(){
+        Route::get('organizations/{organization}/toggle','toggleActive')->name('organizations.toggleActive');
+    });
+
 });
 
 // Clear cache
