@@ -15,17 +15,48 @@ return new class extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
-            // $table->string('name');
-            //persona juridica
-            $table->string('legal_name');
-            //nombre del representante
-            $table->string('representative_name')->nullable();
-            //nit
-            $table->string('nit');
+            // ------------------ Datos del operador ------------------
+            
             //tipo de afiliacion
             $table->string('affiliation_type');
+            //nit
+            $table->string('nit');
             //rubro
             $table->string('business');
+            //telefono
+            $table->string('phone');
+
+            // ------------------ Persona Juridica ------------------
+            //persona juridica
+            $table->string('legal_name');
+            //numero de registro
+            $table->string('legal_number');
+            //fecha
+            $table->date('legal_date');
+            // ------------------ Dominio Legal ------------------
+            //provincia
+            $table->string('province');
+            //municipio
+            $table->string('municipality');
+            //direccion
+            $table->string('address');
+
+            // ------------------ Representante Legal ------------------
+            //nombre del representante
+            $table->string('representative_name')->nullable();
+            // numero de ci
+            $table->string('representative_ci')->nullable();
+            // expedicion
+            $table->string('representative_expedition')->nullable();
+            //telefono
+            $table->string('representative_phone')->nullable();
+            //correo
+            $table->string('representative_email')->nullable();
+            // Nro poder
+            $table->string('representative_power_number')->nullable();
+            
+            
+            // ------------------ Control database ------------------
             //activo
             $table->boolean('active')->default(true);
             $table->timestamps();

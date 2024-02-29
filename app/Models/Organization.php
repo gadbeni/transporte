@@ -9,6 +9,17 @@ class Organization extends Model
 {
     use HasFactory;
 
+    public static $provinces = [
+        'CERCADO',
+        'GRAL. JOSE BALLIVIAN',
+        'ITENEZ',
+        'MAMORE',
+        'MARBAN',
+        'MOXOS',
+        'VACA DIEZ',
+        'YACUMA',
+    ];
+
     protected $fillable = [
         'legal_name',
         'active',
