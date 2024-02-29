@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('organization_route', function (Blueprint $table) {
             $table->id();
-            // ------------------ Datos de las localidades del Beni ------------------
-            //provincia
-            $table->string('province');
-            //municipio
-            $table->string('municipality');
-            
+            $table->unsignedBigInteger('organization_id');
+            $table->unsignedBigInteger('route_id');
+            $table->string('shudown_resolution')->nullable();
+            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('organization_route');
     }
 };

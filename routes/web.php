@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\voyager\organizationsController;
+use App\Http\Controllers\OrganizationRouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], funct
 
     Route::controller(organizationsController::class)->group(function(){
         Route::get('organizations/{organization}/toggle','toggleActive')->name('organizations.toggleActive');
+    });
+    
+    Route::controller(OrganizationRouteController::class)->group(function(){
+        Route::get('organizations/{organization}/routes','edit')->name('organizations.routes.edit');
+        Route::post('organizations/{organization}/routes','update')->name('organizations.routes.update');
     });
 
 });
