@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], funct
     Route::controller(OrganizationRouteController::class)->group(function(){
         Route::get('organizations/{organization}/routes','edit')->name('organizations.routes.edit');
         Route::put('organizations/{organization}/routes','update')->name('organizations.routes.update');
+        Route::delete('organizations/{organization}/routes/{route}','destroy')->name('organizations.routes.destroy');
         // para decargar o ver el archivo
         Route::get('organizations/{organization}/routes/{route}/download','download')->name('organizations.routes.download');
     });

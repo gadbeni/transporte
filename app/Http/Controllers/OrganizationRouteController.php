@@ -39,6 +39,15 @@ class OrganizationRouteController extends Controller
         $organization->routes()->attach($request->routes, ['shudown_resolution' => $fileName]);
 
         return redirect()->route('organizations.routes.edit', $organization);
+    }   
+    public function destroy($organizationId, $routeId)
+    {
+        $organization = Organization::findOrFail($organizationId);
+
+        // Desasociar la ruta de la organización
+        $organization->routes()->detach($routeId);
+
+        return redirect()->route('organizations.routes.edit', $organization);
     }
 
     // Descargar el archivo de resolución

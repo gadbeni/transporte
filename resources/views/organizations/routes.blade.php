@@ -81,9 +81,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                {{-- <a href="{{ route('voyager.organizations.routes.delete', $route->pivot->id) }}" class="btn btn-danger">
-                                                    <i class="voyager-trash"></i>
-                                                </a> --}}
+                                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" data-route-id="{{ $route->id }}" data-action-url="{{ route('organizations.routes.destroy', ['organization' => $organization->id, 'route' => $route->id]) }}">
+                                                    <i class="fa fa-angle-left"></i>
+                                                    Desasociar ruta
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -92,6 +93,31 @@
                     </div>
                 @endif
                 
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-danger fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="deleteModalLabel">Desasociar ruta</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres desasociar esta ruta?
+                </div>
+                <div class="modal-footer">
+                    <form method="POST" id="deleteForm">
+                        @csrf
+                        @method('DELETE')
+    
+                        <button type="submit" class="btn btn-danger pull-right delete-confirm">Desasociar ruta</button>
+                    </form>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -134,6 +160,17 @@
 @stop
 @section('javascript')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#deleteModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var actionUrl = button.data('action-url');
+        
+                var form = $(this).find('#deleteForm');
+                form.attr('action', actionUrl);
+            });
+        });
+        </script>
     <script>
     $(document).ready(function() {
         $('#routes').select2({
