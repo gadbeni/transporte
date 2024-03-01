@@ -181,6 +181,24 @@ class DataTypesTableSeeder extends Seeder
                 'slug' => 'drivers',
                 'updated_at' => '2024-03-01 16:37:07',
             ),
+            9 => 
+            array (
+                'controller' => NULL,
+                'created_at' => '2024-03-01 16:55:32',
+                'description' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
+                'display_name_plural' => 'vehiculos',
+                'display_name_singular' => 'vehiculo',
+                'generate_permissions' => 1,
+                'icon' => 'voyager-truck',
+                'id' => 12,
+                'model_name' => 'App\\Models\\Vehicle',
+                'name' => 'vehicles',
+                'policy_name' => NULL,
+                'server_side' => 0,
+                'slug' => 'vehicles',
+                'updated_at' => '2024-03-01 17:14:19',
+            ),
         ));
         
         
