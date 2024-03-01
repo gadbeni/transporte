@@ -27,4 +27,9 @@ class Organization extends Model
         'legal_name',
         'active',
     ];
+
+    public function routes()
+    {
+        return $this->belongsToMany(Route::class, 'organization_route')->withPivot('shudown_resolution');
+    }
 }

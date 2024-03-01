@@ -271,7 +271,7 @@
                                                 </a>
                                             @endif
                                             <a class="btn btn-sm btn-warning" href="{{ route('organizations.routes.edit',$data->getKey())}}">
-                                                <i class="voyager-forward"></i> <span class="hidden-xs hidden-sm">Agregar Rutas</span>
+                                                <i class="voyager-forward"></i> <span class="hidden-xs hidden-sm">Rutas</span>
                                             </a>
                                         </td>
                                         <td class="no-sort no-click bread-actions">

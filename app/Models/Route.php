@@ -34,4 +34,8 @@ class Route extends Model
         $destination = strtoupper($this->destination->municipality);
         return "{$origin} - {$destination}";
     }
+    public function organizations()
+    {
+        return $this->belongsToMany(Organization::class, 'organization_route');
+    }
 }
