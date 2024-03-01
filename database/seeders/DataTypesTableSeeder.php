@@ -145,6 +145,42 @@ class DataTypesTableSeeder extends Seeder
                 'slug' => 'routes',
                 'updated_at' => '2024-02-29 16:24:12',
             ),
+            7 => 
+            array (
+                'controller' => NULL,
+                'created_at' => '2024-03-01 16:04:59',
+                'description' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
+                'display_name_plural' => 'Asociados',
+                'display_name_singular' => 'Asociado',
+                'generate_permissions' => 1,
+                'icon' => 'voyager-people',
+                'id' => 10,
+                'model_name' => 'App\\Models\\Associate',
+                'name' => 'associates',
+                'policy_name' => NULL,
+                'server_side' => 0,
+                'slug' => 'associates',
+                'updated_at' => '2024-03-01 16:22:48',
+            ),
+            8 => 
+            array (
+                'controller' => NULL,
+                'created_at' => '2024-03-01 16:34:22',
+                'description' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
+                'display_name_plural' => 'Conductores',
+                'display_name_singular' => 'Conductor',
+                'generate_permissions' => 1,
+                'icon' => 'fa fa-drivers-license-o',
+                'id' => 11,
+                'model_name' => 'App\\Models\\Driver',
+                'name' => 'drivers',
+                'policy_name' => NULL,
+                'server_side' => 0,
+                'slug' => 'drivers',
+                'updated_at' => '2024-03-01 16:37:07',
+            ),
         ));
         
         
