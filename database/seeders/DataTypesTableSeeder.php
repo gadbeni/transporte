@@ -161,7 +161,7 @@ class DataTypesTableSeeder extends Seeder
                 'policy_name' => NULL,
                 'server_side' => 0,
                 'slug' => 'associates',
-                'updated_at' => '2024-03-01 16:22:48',
+                'updated_at' => '2024-03-04 09:02:41',
             ),
             8 => 
             array (
@@ -179,7 +179,7 @@ class DataTypesTableSeeder extends Seeder
                 'policy_name' => NULL,
                 'server_side' => 0,
                 'slug' => 'drivers',
-                'updated_at' => '2024-03-01 16:37:07',
+                'updated_at' => '2024-03-04 09:03:03',
             ),
             9 => 
             array (

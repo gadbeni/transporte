@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\voyager\organizationsController;
+use App\Http\Controllers\voyager\AssociateController;
+
 use App\Http\Controllers\OrganizationRouteController;
 
 /*
@@ -26,6 +28,12 @@ Route::get('/', function () {
 Route::get('maintenance', function () {
     return view('errors.maintenance');
 })->name('errors.maintenance');
+
+// Route::get('/associates/{associate}',[AssociateController::class, 'showDetails'] )->name('associates.showDetails');
+
+Route::controller(AssociateController::class)->group(function(){
+    Route::get('associates/{id}','showDetails')->name('associates.showDetails');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], function () {
     Voyager::routes();

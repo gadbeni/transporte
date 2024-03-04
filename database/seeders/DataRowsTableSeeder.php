@@ -1603,6 +1603,38 @@ class DataRowsTableSeeder extends Seeder
                 'required' => 0,
                 'type' => 'timestamp',
             ),
+            99 => 
+            array (
+                'add' => 1,
+                'browse' => 1,
+                'data_type_id' => 10,
+                'delete' => 1,
+                'details' => '{"on":"Activo","off":"Inactivo","checked":true}',
+                'display_name' => 'Estado',
+                'edit' => 1,
+                'field' => 'active',
+                'id' => 111,
+                'order' => 6,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'checkbox',
+            ),
+            100 => 
+            array (
+                'add' => 0,
+                'browse' => 1,
+                'data_type_id' => 11,
+                'delete' => 1,
+                'details' => '{"on":"Activo","off":"Inactivo","checked":true}',
+                'display_name' => 'Estado',
+                'edit' => 1,
+                'field' => 'active',
+                'id' => 112,
+                'order' => 9,
+                'read' => 1,
+                'required' => 1,
+                'type' => 'checkbox',
+            ),
         ));
         
         

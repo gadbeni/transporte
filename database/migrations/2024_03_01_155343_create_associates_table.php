@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('ci')->unique();
             $table->string('expedition_ci');
+            $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
 

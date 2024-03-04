@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('license_number');
             // fecha de vencimiento
             $table->date('expiration_date');
+            // activo
+            $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
