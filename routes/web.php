@@ -43,11 +43,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], funct
     });
     
     Route::controller(OrganizationRouteController::class)->group(function(){
-        Route::get('organizations/{organization}/routes','edit')->name('organizations.routes.edit');
-        Route::put('organizations/{organization}/routes','update')->name('organizations.routes.update');
-        Route::delete('organizations/{organization}/routes/{route}','destroy')->name('organizations.routes.destroy');
+        Route::get('organizations/{organization}/routes','edit')->name('organizations.routes.edit')->middleware('auth');
+        Route::put('organizations/{organization}/routes','update')->name('organizations.routes.update')->middleware('auth');
+        Route::delete('organizations/{organization}/routes/{route}','destroy')->name('organizations.routes.destroy')->middleware('auth');
         // para decargar o ver el archivo
-        Route::get('organizations/{organization}/routes/{route}/download','download')->name('organizations.routes.download');
+        Route::get('organizations/{organization}/routes/{route}/download','download')->name('organizations.routes.download')->middleware('auth');
+    });
+
+    Route::controller(AssociateController::class)->group(function(){
+        Route::get('associates/{id}/qr','showQrCode')->name('associates.showQrCode')->middleware('auth');
+    
     });
 
 });

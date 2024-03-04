@@ -12,7 +12,7 @@
         {{ $error }}
     </div>
     @else
-    <h1> El asociado es puto</h1>
+    <h1> El asociado es Fruto</h1>
     @endif
     
     

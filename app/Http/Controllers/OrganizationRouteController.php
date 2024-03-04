@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Organization;
 use App\Models\Route;
+use App\Models\Organization;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrganizationRouteController extends Controller
 {
     //
     public function edit($id)
     {
+        $user = Auth::user();
+        if (!$user->hasPermission('add_routes')) {
+            abort(403, 'No tienes Autorización');
+        }
+        
         $organization = Organization::with('routes')->findOrFail($id);
         $routes = Route::whereDoesntHave('organizations', function ($query) use ($id) {
             $query->where('organizations.id', $id);
@@ -21,6 +27,10 @@ class OrganizationRouteController extends Controller
 
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
+        if (!$user->hasPermission('add_routes')) {
+            abort(403, 'No tienes Autorización');
+        }
         $organization = Organization::findOrFail($id);
 
         // Validar los datos de la solicitud...
@@ -42,6 +52,10 @@ class OrganizationRouteController extends Controller
     }   
     public function destroy($organizationId, $routeId)
     {
+        $user = Auth::user();
+        if (!$user->hasPermission('delete_routes')) {
+            abort(403, 'No tienes Autorización');
+        }
         $organization = Organization::findOrFail($organizationId);
 
         // Desasociar la ruta de la organización
