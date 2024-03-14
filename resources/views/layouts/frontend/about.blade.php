@@ -1,13 +1,20 @@
   <!--==========================
   About Section
   ============================-->
+<br>
+<br>
+  <h1 class="section-title">Bienvenidos al Sistema de  TRANSPORTE</h1>
+  <h2 class="section-description"> nosotros Viajamos <span class="rotating">por todo el departamento del Beni</span></h2>
+  
   <section id="about">
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-12">
+          
+         
           <h3 class="section-title">Buscar</h3>
           <div class="section-title-divider"></div>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
+          <p class="section-description">Se busca el carnet de identidad del chofer del auto</p>
 
           
           <div class="input-group-lg">

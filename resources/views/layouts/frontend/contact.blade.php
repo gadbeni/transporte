@@ -5,9 +5,8 @@
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-12">
-          <h3 class="section-title">Contact Us</h3>
+          <h3 class="section-title">Contactos</h3>
           <div class="section-title-divider"></div>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </div>
       </div>
 
@@ -22,17 +21,17 @@
           <div class="info">
             <div>
               <i class="fa fa-map-marker"></i>
-              <p>A108 Adam Street<br>New York, NY 535022</p>
+              <p>Trinidad, Av/ </p>
             </div>
 
             <div>
               <i class="fa fa-envelope"></i>
-              <p>info@example.com</p>
+              <p>info@gmail.com</p>
             </div>
 
             <div>
               <i class="fa fa-phone"></i>
-              <p>+1 5589 55488 55s</p>
+              <p>+591 32432443</p>
             </div>
 
           </div>

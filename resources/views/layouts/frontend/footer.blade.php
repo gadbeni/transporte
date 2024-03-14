@@ -6,11 +6,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="copyright">
-            &copy; Copyright <strong>ProOnliPc Theme</strong>. All Rights Reserved
+            &copy; Copyright <strong>Gobierno Departamenal del Beni</strong>. Todos los derechos reservados
           </div>
           <div class="credits">
-        
-            Templates by <a href="https://www.youtube.com/channel/UCDH0DJaVLkCDtl_YN9hhByw?view_as=subscriber">ProOnliPc</a>
+            <a href="https://siscor.beni.gob.bo/">GAD-BENI 2024</a>
           </div>
         </div>
       </div>
