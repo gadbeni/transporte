@@ -16,14 +16,17 @@ use App\Http\Controllers\OrganizationRouteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
 
 Route::get('login', function () {
     return redirect('admin/login');
 })->name('login');
 
-Route::get('/', function () {
-    return redirect('admin');
-});
+// Route::get('/', function () {
+//     return redirect('admin');
+// });
 
 Route::get('maintenance', function () {
     return view('errors.maintenance');
