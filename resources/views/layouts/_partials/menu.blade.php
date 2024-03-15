@@ -24,10 +24,10 @@ Hero Section
   Sección de encabezado
   ============================-->
   
-<header id="header">
+<header style="background: #098429" id="header">
     <div class="container">
         <div id="logo" class="pull-left">
-        <a href="{{ route('login') }}"><img src="{{asset('images/lg.png')}}" alt="de" title=""  width="100" height="190"/></img></a>
+        <a href="{{ route('login') }}"><img src="{{asset('images/lgt.png')}}" alt="de" title=""  width="150" height="200"/></img></a>
         <!-- Descomenta abajo si prefieres usar una imagen de texto -->
         <!--<h1><a href="#hero">Encabezado 1</a></h1>-->
         </div>
@@ -35,10 +35,10 @@ Hero Section
         <ul class="nav-menu">
             <li><a href="{{ route('login') }}">Inicio</a></li>
             <li><a href="#about">Buscar</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#portfolio">Provincias</a></li>
+            {{-- <li><a href="#services">Servicios</a></li> --}}
+            {{-- <li><a href="#portfolio">Provincias</a></li> --}}
             <li><a href="#testimonials">Testimonios</a></li>
-            <li><a href="#team">Equipo</a></li>
+            {{-- <li><a href="#team">Equipo</a></li> --}}
             <li><a href="#contact">Contacto</a></li>
         </ul>
         </nav>

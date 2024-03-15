@@ -28,6 +28,9 @@ Route::get('login', function () {
 //     return redirect('admin');
 // });
 
+//Route::get('/search', [AssociateController::class, 'search']);
+
+
 Route::get('maintenance', function () {
     return view('errors.maintenance');
 })->name('errors.maintenance');
@@ -37,6 +40,9 @@ Route::get('maintenance', function () {
 Route::controller(AssociateController::class)->group(function(){
     Route::get('associates/{id}','showDetails')->name('associates.showDetails');
 });
+
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], function () {
     Voyager::routes();
