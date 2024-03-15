@@ -41,7 +41,9 @@ Route::controller(AssociateController::class)->group(function(){
     Route::get('associates/{id}','showDetails')->name('associates.showDetails');
 });
 
+// routes/web.php
 
+Route::get('/', [AssociateController::class, 'searchByCI'])->name('search');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], function () {

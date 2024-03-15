@@ -26,18 +26,37 @@
           
             <div style="display: flex; justify-content: center;" class="">            
               <div  class="col-md-8">
-                <form action="" method="get">
-                    <div  class="input-group input-group-lg">
-                      <input   type="text" class="form-control" placeholder="Buscar por Carnet de Identidad..." value="">
-                      <span class="input-group-btn">
-                          <button class="btn btn-success" id="btn-search" type="button">Buscar</button>
-                      </span>
-                    </div><!-- /input-group -->
-                </form>
+                {{-- {{ route('') }} --}}
+                  <form action="" method="GET"> <!-- Se especifica la ruta adecuada -->
+                      <div  class="input-group input-group-lg">
+                          <input type="text" name="ci" class="form-control" placeholder="Buscar por Carnet de Identidad..." value="">
+                          <span class="input-group-btn">
+                              <button class="btn btn-success" id="btn-search" type="submit">Buscar</button> <!-- Se cambia el tipo de botón a submit -->
+                          </span>
+                      </div><!-- /input-group -->
+                  </form>
               </div><!-- /input-group -->
             </div>
+            <br>
+            <div  class="container">
+              {{-- @if ($associate) --}}
+                    <h2>Detalles del Asociado</h2>
+                    <ul class="list-group list-group-2">
+                      {{-- {{ $associate->full_name }} --}}
+                        <li class="list-group-item"><strong>Nombre Completo:</strong> Milton Daniel Hipamo</li>
+                        <li class="list-group-item"><strong>CI:</strong> 1234556</li>
+                        <li class="list-group-item"><strong>Fecha de Expedición CI:</strong> BN</li>
+                        <li class="list-group-item"><strong>Activo:</strong> Sí</li>
+                        <!-- Puedes mostrar más detalles según tus necesidades -->
+                    </ul>
+             {{-- @else
+                    <p>No se encontró ningún asociado con el CI proporcionado.</p>
+                  @endif --}}
+            </div>
+          </div>
         </div>
         <br> 
       </div>
     </div>    
   </section>
+<br>

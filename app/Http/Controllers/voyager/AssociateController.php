@@ -23,24 +23,28 @@ class AssociateController extends Controller
 
         return view('associates.show', ['associate' => $associate]);
     }
-
-
-    // public function search(Request $request)
-    // {
-    //     $ci = $request->input('ci');
-
-    //     $associate = Associate::where('ci', $ci)->first();
-
-    //     return view('associates.search', ['associate' => $associate]);
-    // }
-    // public function search(Request $request){
-    //     $associate=$associate->where('id', 'like', '%',.$request->)
-    //     $associate = DB::table('associates')
-    //                     ->select('full_name', 'ci')
-    //                     ->where('ci', 'LIKE', '%'.$texto.'%');
-    // //     // dd($data);
-    //     return view('associate.search', compact('associate'));
-    // }
+    public function searchByCI(Request $request)
+    {
+        $ci = $request->input('ci');
+        
+        // Buscar al asociado en la base de datos
+        $associate = Associate::where('ci', $ci)->first();
+    
+        // Verificar si se encontró un asociado
+        if (!$associate) {
+            $error = 'No se encontró ningún asociado con el CI proporcionado.';
+            return view('welcome', ['error' => $error]);
+        }
+    
+        // Verificar si el asociado está activo
+        if (!$associate->active) {
+            $error = 'El asociado no está activo';
+            return view('welcome', ['associate' => $associate, 'error' => $error]);
+        }
+    
+        // Si el asociado existe y está activo, mostrar los detalles
+        return view('welcome', ['associate' => $associate]);
+    }
 
     public function showQrCode($id)
     {
@@ -53,5 +57,4 @@ class AssociateController extends Controller
         $qr = QrCode::size(300)->generate(route('associates.showDetails', $associate->id));
         return view('associates.qr', ['associate' => $associate, 'qr' => $qr]);
     }
-
 }
