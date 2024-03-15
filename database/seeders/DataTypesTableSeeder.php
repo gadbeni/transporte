@@ -71,7 +71,7 @@ class DataTypesTableSeeder extends Seeder
                 'policy_name' => NULL,
                 'server_side' => 0,
                 'slug' => 'roles',
-                'updated_at' => '2022-08-14 23:40:05',
+                'updated_at' => '2024-03-04 11:41:29',
             ),
             3 => 
             array (
@@ -107,7 +107,7 @@ class DataTypesTableSeeder extends Seeder
                 'policy_name' => NULL,
                 'server_side' => 0,
                 'slug' => 'organizations',
-                'updated_at' => '2024-02-29 17:58:18',
+                'updated_at' => '2024-03-15 15:39:03',
             ),
             5 => 
             array (

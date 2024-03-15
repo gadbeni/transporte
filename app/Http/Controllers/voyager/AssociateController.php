@@ -13,9 +13,9 @@ class AssociateController extends Controller
     //
     public function showDetails($id)
     {
-        $associate = Associate::findOrFail($id);
+        $associate = Associate::with('vehicles')->findOrFail($id);
         if (!$associate->active) {
-            $error = 'El asociado no está activo';
+            $error = 'El asociado no se encuentra activo';
             return view('associates.show', ['associate' => $associate, 'error' => $error]);
         }
 
