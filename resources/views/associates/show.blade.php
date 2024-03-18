@@ -45,8 +45,13 @@
                         </div>
                         <hr>
                         <div class="col-md-12 mt-1">
+                            @if ($associate->organization)
                             <b>Tipo de organización a la que pertenece: </b> &nbsp; {{ $associate->organization->affiliation_type}}<br>
                             <b>Nombre de la organización a la que pertenece: </b> &nbsp; {{ $associate->organization->legal_name}}<br>
+                            @else
+                            <b>Tipo de organización a la que pertenece: </b> &nbsp; Sin organización<br>
+                            <b>Nombre de la organización a la que pertenece: </b> &nbsp; Sin organización<br>
+                            @endif
                             <b>Nombre Completo: </b> &nbsp; {{ $associate->full_name }}<br>
                             <b>Estado: </b> &nbsp; <span class="bg-success text-white" style="padding: 2px 5px"> Activo</span>
                         </div>
@@ -100,6 +105,12 @@
                                 </table>
                             </div>
                             <br>
+                        </div>
+                        @else
+                        <div class="col-md-12">
+                            <div class="alert alert-warning">
+                                El asociado no tiene vehiculos registrados.
+                            </div>
                         </div>   
                         @endif
                     </div>
