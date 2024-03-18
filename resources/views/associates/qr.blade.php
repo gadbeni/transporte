@@ -28,8 +28,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
     background-image: url('{{ asset('images/img-Qr.png') }}');
     background-size: cover;
     background-repeat: no-repeat;
