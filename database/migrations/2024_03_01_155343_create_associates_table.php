@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('associates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('organization_id');
+            $table->string('image')->nullable();
             $table->string('full_name');
             $table->string('ci')->unique();
             $table->string('expedition_ci');

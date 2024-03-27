@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Associate;
 use App\Models\Vehicle;
 use App\Models\Route;
+use App\Models\Organization;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,6 @@ class HomeController extends Controller
     }
 
     public function search(Request $request){
-
         $associate = Associate::with('vehicles')
             ->where('ci', $request->search)
             ->first();
@@ -34,9 +34,8 @@ class HomeController extends Controller
                 $associate = Associate::with('vehicles')
                     ->where('id', $vehicle->associate_id)
                     ->first();
-            }
-        }
-
+            }          
+        } 
         if ($associate) {
             if (!$associate->active) {
                 $error = 'El asociado no se encuentra activo';
@@ -48,6 +47,6 @@ class HomeController extends Controller
             return view('search', ['associate' => $associate]);
         }
         
-        return view('search',['associate' => $associate]);
+        return view('search', ['associate' => $associate]);
     }
 }

@@ -728,15 +728,15 @@ class DataRowsTableSeeder extends Seeder
                 'id' => 45,
                 'data_type_id' => 5,
                 'field' => 'representative_expedition',
-                'type' => 'text',
-                'display_name' => 'Expedicion',
+                'type' => 'select_dropdown',
+                'display_name' => 'Expedición',
                 'required' => 0,
                 'browse' => 0,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 0,
-                'details' => '{}',
+                'details' => '{"default":"BENI","options":{"BENI":"BN","SANTA CRUZ":"SC","COCHABAMBA":"CB","POTOSI":"PT","ORURO":"OR","PANDO":"PA","TARIJA":"TJ","CHUQUISACA":"CH","LA PAZ":"LP"}}',
                 'order' => 14,
             ),
             45 => 
@@ -1089,14 +1089,14 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 5,
+                'order' => 6,
             ),
             67 => 
             array (
                 'id' => 78,
                 'data_type_id' => 10,
                 'field' => 'expedition_ci',
-                'type' => 'text',
+                'type' => 'select_dropdown',
                 'display_name' => 'Expedido',
                 'required' => 1,
                 'browse' => 1,
@@ -1104,8 +1104,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
-                'order' => 6,
+                'details' => '{"default":"BENI","options":{"BENI":"BN","SANTA CRUZ":"SC","COCHABAMBA":"CB","POTOSI":"PT","ORURO":"OR","PANDO":"PA","TARIJA":"TJ","CHUQUISACA":"CH","LA PAZ":"LP"}}',
+                'order' => 7,
             ),
             68 => 
             array (
@@ -1121,7 +1121,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 7,
+                'order' => 9,
             ),
             69 => 
             array (
@@ -1137,7 +1137,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 8,
+                'order' => 10,
             ),
             70 => 
             array (
@@ -1153,7 +1153,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 9,
+                'order' => 11,
             ),
             71 => 
             array (
@@ -1217,7 +1217,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 3,
+                'order' => 4,
             ),
             75 => 
             array (
@@ -1232,15 +1232,15 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
-                'order' => 4,
+                'details' => '{"validation":{"rule":"unique:drivers,ci"}}',
+                'order' => 5,
             ),
             76 => 
             array (
                 'id' => 88,
                 'data_type_id' => 11,
                 'field' => 'expedition_ci',
-                'type' => 'text',
+                'type' => 'select_dropdown',
                 'display_name' => 'Expedición Ci',
                 'required' => 1,
                 'browse' => 0,
@@ -1248,8 +1248,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
-                'order' => 5,
+                'details' => '{"default":"BENI","options":{"BENI":"BN","SANTA CRUZ":"SC","COCHABAMBA":"CB","POTOSI":"PT","ORURO":"OR","PANDO":"PA","TARIJA":"TJ","CHUQUISACA":"CH","LA PAZ":"LP"}}',
+                'order' => 6,
             ),
             77 => 
             array (
@@ -1265,7 +1265,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 6,
+                'order' => 7,
             ),
             78 => 
             array (
@@ -1280,8 +1280,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
-                'order' => 7,
+                'details' => '{"validation":{"rule":"unique:drivers,license_number"}}',
+                'order' => 8,
             ),
             79 => 
             array (
@@ -1296,8 +1296,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
-                'order' => 8,
+                'details' => '{"validation":{"rule":"required"}}',
+                'order' => 9,
             ),
             80 => 
             array (
@@ -1313,7 +1313,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 9,
+                'order' => 10,
             ),
             81 => 
             array (
@@ -1329,7 +1329,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 10,
+                'order' => 12,
             ),
             82 => 
             array (
@@ -1345,7 +1345,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 11,
+                'order' => 13,
             ),
             83 => 
             array (
@@ -1377,7 +1377,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 4,
+                'order' => 5,
             ),
             85 => 
             array (
@@ -1466,13 +1466,13 @@ class DataRowsTableSeeder extends Seeder
                 'field' => 'number_chassis',
                 'type' => 'text',
                 'display_name' => 'Numero de Chasis',
-                'required' => 1,
+                'required' => 0,
                 'browse' => 0,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
+                'details' => '{"validation":{"rule":"unique:vehicles,number_chassis"}}',
                 'order' => 10,
             ),
             91 => 
@@ -1482,13 +1482,13 @@ class DataRowsTableSeeder extends Seeder
                 'field' => 'number_plate',
                 'type' => 'text',
                 'display_name' => 'Numero de placa',
-                'required' => 1,
+                'required' => 0,
                 'browse' => 1,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
+                'details' => '{"validation":{"rule":"unique:vehicles,number_plate"}}',
                 'order' => 11,
             ),
             92 => 
@@ -1577,15 +1577,15 @@ class DataRowsTableSeeder extends Seeder
                 'data_type_id' => 12,
                 'field' => 'photo',
                 'type' => 'image',
-                'display_name' => 'Photo',
-                'required' => 1,
-                'browse' => 0,
+                'display_name' => 'Foto',
+                'required' => 0,
+                'browse' => 1,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 5,
+                'order' => 4,
             ),
             98 => 
             array (
@@ -1617,7 +1617,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{"on":"Activo","off":"Inactivo","checked":true}',
-                'order' => 6,
+                'order' => 8,
             ),
             100 => 
             array (
@@ -1633,7 +1633,39 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 1,
                 'details' => '{"on":"Activo","off":"Inactivo","checked":true}',
-                'order' => 9,
+                'order' => 11,
+            ),
+            101 => 
+            array (
+                'id' => 113,
+                'data_type_id' => 10,
+                'field' => 'image',
+                'type' => 'image',
+                'display_name' => 'imagen',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 5,
+            ),
+            102 => 
+            array (
+                'id' => 114,
+                'data_type_id' => 11,
+                'field' => 'photo',
+                'type' => 'image',
+                'display_name' => 'foto',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 3,
             ),
         ));
         

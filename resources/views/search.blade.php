@@ -61,7 +61,8 @@
                 <b>Tipo de organización a la que pertenece: </b> &nbsp; {{ $associate->organization->affiliation_type}}<br>
                 <b>Nombre de la organización a la que pertenece: </b> &nbsp; {{ $associate->organization->legal_name}}<br>
                 <b>Nombre Completo: </b> &nbsp; {{ $associate->full_name }}<br>
-                <b>Estado: </b> &nbsp; <span class="bg-success text-white" style="padding: 2px 5px"> Activo</span>
+                <b>Estado: </b> &nbsp; <span class="bg-success text-white" style="padding: 2px 5px"> Activo</span> <br>
+                <b>Imagen: </b> &nbsp; <td style="text-align: center;"><img style="text-align: center" src="{{ asset('storage/'.$associate->image) }}" alt="" height="100"></td> <br>
             </div>
         </div>
         <div class="row m-5">
@@ -99,9 +100,57 @@
                     </table>
                 </div>
                 <br>
+            </div>
+            @else
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    El asociado no tiene vehiculos registradas.
+                </div>
+            </div>   
+            @endif   
+        </div>
+        
+        <div class="row m-5">
+            <div class="col-md-12">
+                <h4 style="text-decoration: underline">Ruta de la organización</h4>
+            </div>
+        </div>
+
+        <div class="row m-5">
+            @if ($associate->organization->routes->count() > 0)
+            <div class="col-md-12">
+                <h4 style= "text-align: center" "text-decoration: underline">Ruta del Asociado</h4> <br>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                            <th scope="col"> N°</th>
+                            <th scope="col"> LOCALIDAD ORIGEN</th>
+                            <th scope="col"> LOCALIDAD DESTINO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($associate->organization->routes as $route)
+                            <tr>
+                            <th scope="row">{{$loop->iteration}}</th>
+                            <td style="text-transform: uppercase;"> <strong>Provincia:</strong> {{ $route->origin->province }}<strong> -- Ciudad: </strong> {{ $route->origin->municipality }}</td>
+                            <td style="text-transform: uppercase;"> <strong>Provincia:</strong>  {{ $route->destination->province }}<strong> -- Ciudad: </strong>{{$route->destination->municipality}}</td>
+                            </tr>
+                            @endforeach                                        
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+            </div>
+            @else
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    El asociado no tiene rutas registradas.
+                </div>
             </div>   
             @endif
         </div>
+       
     @endif
     <hr>
 </section>

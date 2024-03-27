@@ -30,7 +30,7 @@ Route::get('maintenance', function () {
 })->name('errors.maintenance');
 
 // Route::get('/associates/{associate}',[AssociateController::class, 'showDetails'] )->name('associates.showDetails');
-
+    
 Route::controller(AssociateController::class)->group(function(){
     Route::get('associates/{id}','showDetails')->name('associates.showDetails');
 });
@@ -51,10 +51,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'desarrollo.creativo'], funct
     });
 
     Route::controller(AssociateController::class)->group(function(){
-        Route::get('associates/{id}/qr','showQrCode')->name('associates.showQrCode')->middleware('auth');
-    
+        Route::get('associates/{id}/qr','showQrCode')->name('associates.showQrCode')->middleware('auth');    
     });
-
 });
 
 // Clear cache

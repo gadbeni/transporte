@@ -30,6 +30,7 @@ class Organization extends Model
 
     public function routes()
     {
-        return $this->belongsToMany(Route::class, 'organization_route')->withPivot('shudown_resolution');
+        return $this->belongsToMany(Route::class, 'organization_route')
+        ->withPivot('shudown_resolution');
     }
 }

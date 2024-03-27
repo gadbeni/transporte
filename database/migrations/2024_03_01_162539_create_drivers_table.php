@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             // nombre completo
             $table->string('full_name');
+            // foto
+            $table->string('photo')->nullable();
             // telefono
             $table->string('phone');
             // ci
@@ -26,7 +28,7 @@ return new class extends Migration
             // categoria
             $table->string('category');
             // nro de licencia
-            $table->string('license_number');
+            $table->string('license_number')->unique();
             // fecha de vencimiento
             $table->date('expiration_date');
             // activo

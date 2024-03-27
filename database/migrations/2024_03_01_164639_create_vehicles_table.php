@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             // ------------------ Datos de los vehiculos ------------------
             //foto
-            $table->string('photo');
+            $table->string('photo')->nullable();
             //clase de vehiculo 
             $table->string('class');
             //socios que pueden usar los vehiculos
@@ -32,9 +32,9 @@ return new class extends Migration
             //año del vehiculo
             $table->string('year');
             //numero de chasis
-            $table->string('number_chassis')->unique();
+            $table->string('number_chassis')->unique()->nullable();
             //numero de placas
-            $table->string('number_plate')->unique();
+            $table->string('number_plate')->unique()->nullable();
             //crpva
             $table->string('crpva');
             //soat

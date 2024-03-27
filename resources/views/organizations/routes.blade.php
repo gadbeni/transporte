@@ -70,6 +70,7 @@
                                     @foreach ($organization->routes as $route)
                                         <tr>
                                             <td>{{ $route->full_route }}</td>
+                                            
                                             <td>
                                                 @if ($route->pivot->shudown_resolution)
                                                     <a class="label label-warning" style="text-decoration: none" href="{{ route('organizations.routes.download', ['organization' => $organization->id, 'route' => $route->id]) }}" target="_blank">
