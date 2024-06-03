@@ -8,149 +8,189 @@
         @endif
     </div>
     @if (isset($error))
-        <div class="row m-5">
-            <div class="col-md-6">
-                <div class="panel-body" style="padding-top:0;">
-                    <p>Documento de identificación</p>
-                </div>
-                <div class="panel-heading" style="border-bottom:0;">
-                    <h3 class="panel-title">{{ $associate->ci }} {{ $associate->expedition_ci }}</h3>
-                </div>
+    <div class="row m-5">
+        <div class="col-md-6">
+            <div class="panel-body" style="padding-top:0;">
+                <p>Documento de identificación</p>
             </div>
-            <div class="col-md-6" style="text-align: right">
-                <div class="panel-body" style="padding-top:0;">
-                    <p>Fecha registro</p>
-                </div>
-                <div class="panel-heading" style="border-bottom:0;">
-                    <h5 class="panel-title">{{ date('d/m/Y H:i:s', strtotime($associate->created_at)) }} <small>{{ \Carbon\Carbon::parse($associate->created_at)->diffForHumans() }}</small></h5>
-                </div>
-            </div>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center mt-3">
-                <img src="{{ asset('images/not-found.png') }}" width="150px" alt="Not Found">
-                <h3 class="text-muted mt-3">{{ $error }}</h3>
+            <div class="panel-heading" style="border-bottom:0;">
+                <h3 class="panel-title">{{ $associate->ci }} {{ $associate->expedition_ci }}</h3>
             </div>
         </div>
-        <div class="row m-5">
-            <div class="alert alert-danger">
-                El asociado con documento de identidad <strong>{{ $associate->ci }} {{ $associate->expedition_ci }}</strong> no se encuentra activo.
+        <div class="col-md-6" style="text-align: right">
+            <div class="panel-body" style="padding-top:0;">
+                <p>Fecha registro</p>
+            </div>
+            <div class="panel-heading" style="border-bottom:0;">
+                <h5 class="panel-title">{{ date('d/m/Y H:i:s', strtotime($associate->created_at)) }} <small>{{
+                        \Carbon\Carbon::parse($associate->created_at)->diffForHumans() }}</small></h5>
             </div>
         </div>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center mt-3">
+            <img src="{{ asset('images/not-found.png') }}" width="150px" alt="Not Found">
+            <h3 class="text-muted mt-3">{{ $error }}</h3>
+        </div>
+    </div>
+    <div class="row m-5">
+        <div class="alert alert-danger">
+            El asociado con documento de identidad <strong>{{ $associate->ci }} {{ $associate->expedition_ci }}</strong>
+            no se encuentra activo.
+        </div>
+    </div>
     @else
-        <div class="row m-5">
+    <div class="container mt-5">
+        <div class="row">
             <div class="col-md-6">
-                <div class="panel-body" style="padding-top:0;">
-                    <p>Documento de identificación</p>
-                </div>
-                <div class="panel-heading" style="border-bottom:0;">
-                    <h3 class="panel-title">{{ $associate->ci }} {{ $associate->expedition_ci }}</h3>
-                </div>
-            </div>
-            <div class="col-md-6" style="text-align: right">
-                <div class="panel-body" style="padding-top:0;">
-                    <p>Fecha registro</p>
-                </div>
-                <div class="panel-heading" style="border-bottom:0;">
-                    <h5 class="panel-title">{{ date('d/m/Y H:i:s', strtotime($associate->created_at)) }} <small>{{ \Carbon\Carbon::parse($associate->created_at)->diffForHumans() }}</small></h5>
+                <div class="card">
+                    <h5 class="card-title">Documento de identificación</h5>
+                    <div class="card-body">
+                        <p>{{ $associate->ci }} {{ $associate->expedition_ci }}</p>
+                    </div>
                 </div>
             </div>
-            <hr>
-            <div class="col-md-12 mt-1">
-                <b>Tipo de organización a la que pertenece: </b> &nbsp; {{ $associate->organization->affiliation_type}}<br>
-                <b>Nombre de la organización a la que pertenece: </b> &nbsp; {{ $associate->organization->legal_name}}<br>
-                <b>Nombre Completo: </b> &nbsp; {{ $associate->full_name }}<br>
-                <b>Estado: </b> &nbsp; <span class="bg-success text-white" style="padding: 2px 5px"> Activo</span> <br>
-                <b>Imagen: </b> &nbsp; <td style="text-align: center;"><img style="text-align: center" src="{{ asset('storage/'.$associate->image) }}" alt="" height="100"></td> <br>
+            <div class="col-md-6">
+                <div class="card">
+                    <h5 class="card-title">Fecha de registro</h5>
+                    <div class="card-body">
+                        <p>{{ date('d/m/Y H:i:s', strtotime($associate->created_at)) }} <small>{{
+                                \Carbon\Carbon::parse($associate->created_at)->diffForHumans() }}</small></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row m-5">
+        <hr>
+        <div class="row">
             <div class="col-md-12">
-                <h4 style="text-decoration: underline">Vehiculos del Asociado</h4>
+                @if ($associate->organization)
+                <div class="card">
+                    <h5 class="card-title">Afiliación a organización</h5>
+                    <div class="card-body">
+                        <p><b>Tipo de organización: </b>{{ $associate->organization->affiliation_type }}</p>
+                        <p><b>Nombre de la organización:</b> {{ $associate->organization->legal_name }}</p>
+                    </div>
+                </div>
+                @else
+                <div class="card">
+                    <h5 class="card-title">Afiliación a organización</h5>
+                    <div class="card-body">
+                        <p>Sin organización</p>
+                    </div>
+                </div>
+                @endif
+                <div class="card">
+                    <h5 class="card-title">Información personal</h5>
+                    <div class="card-body row">
+                        <div class="col-md-8">
+                            <p><b> Nombre Completo: </b>{{ $associate->full_name }}</p>
+                            <p><b>Estado: </b><span class="bg-success text-white">Activo</span></p>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <p><b>Foto:</b></p>
+                            <img src="{{ asset('storage/'.$associate->image) }}" alt="" class="img-fluid"
+                                style="width: 80px;">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row m-5">
-            @if ($associate->vehicles->count() > 0)
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                            <th scope="col"> </th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Clase</th>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Año</th>
-                            <th scope="col">N° de Placa</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($associate->vehicles as $vehicle)
-                            <tr>
-                            <th scope="row">{{$loop->iteration}}</th>
-                            <td><img src="{{ asset('storage/'.$vehicle->photo) }}" alt="" height="100"></td>
+    </div>
+
+    <div class="row m-5">
+        <div class="col-md-12">
+            <h4 class="display-9 text-uppercase text-secondary border-bottom pb-2">Vehiculos del Asociado</h4>
+        </div>
+    </div>
+
+
+    <div class="row m-5">
+        @if ($associate->vehicles->count() > 0)
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped  table-bordered">
+                    <thead class="thead-dark bg-success">
+                        <tr>
+                            <th scope="col">N°</th>
+                            <th scope="col" class="text-nowrap text-white text-center">Foto</th>
+                            <th scope="col" class="text-nowrap text-white">Clase</th>
+                            <th scope="col" class="text-nowrap text-white">Marca</th>
+                            <th scope="col" class="text-nowrap text-white">Año</th>
+                            <th scope="col" class="text-nowrap text-white">N° de Placa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($associate->vehicles as $vehicle)
+                        <tr>
+                            <th scope="row" class="text-center">{{$loop->iteration}}</th>
+                            <td class="text-center"><img src="{{ asset('storage/'.$vehicle->photo) }}" alt=""
+                                    class="img-fluid" style="max-width: 100px;"></td>
                             <td>{{ $vehicle->class }}</td>
                             <td>{{ $vehicle->brand}}</td>
                             <td>{{ $vehicle->year }}</td>
                             <td>{{ $vehicle->number_plate }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <br>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            @else
-            <div class="col-md-12">
-                <div class="alert alert-warning">
-                    El asociado no tiene vehiculos registradas.
-                </div>
-            </div>   
-            @endif   
+            <br>
         </div>
-        
-        <div class="row m-5">
-            <div class="col-md-12">
-                <h4 style="text-decoration: underline">Ruta de la organización</h4>
+        @else
+        <div class="col-md-12">
+            <div class="alert alert-warning">
+                El asociado no tiene vehiculos registrados.
             </div>
         </div>
+        @endif
+    </div>
 
-        <div class="row m-5">
-            @if ($associate->organization->routes->count() > 0)
-            <div class="col-md-12">
-                <h4 style= "text-align: center" "text-decoration: underline">Ruta del Asociado</h4> <br>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                            <th scope="col"> N°</th>
-                            <th scope="col"> LOCALIDAD ORIGEN</th>
-                            <th scope="col"> LOCALIDAD DESTINO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($associate->organization->routes as $route)
-                            <tr>
-                            <th scope="row">{{$loop->iteration}}</th>
-                            <td style="text-transform: uppercase;"> <strong>Provincia:</strong> {{ $route->origin->province }}<strong> -- Ciudad: </strong> {{ $route->origin->municipality }}</td>
-                            <td style="text-transform: uppercase;"> <strong>Provincia:</strong>  {{ $route->destination->province }}<strong> -- Ciudad: </strong>{{$route->destination->municipality}}</td>
-                            </tr>
-                            @endforeach                                        
-                        </tbody>
-                    </table>
-                </div>
-                <br>
-            </div>
-            @else
-            <div class="col-md-12">
-                <div class="alert alert-warning">
-                    El asociado no tiene rutas registradas.
-                </div>
-            </div>   
-            @endif
+    <div class="row m-5">
+        <div class="col-md-12">
+            <h4 class="display-9 text-uppercase text-secondary border-bottom pb-2">Ruta de la organización</h4>
         </div>
-       
+    </div>
+
+    <div class="row m-5">
+        @if ($associate->organization->routes->count() > 0)
+        <div class="col-md-12">
+            <h4 style="text-align: center" "text-decoration: underline">Ruta del Asociado</h4> <br>
+            <div class="table-responsive">
+                <table class="table table-striped  table-bordered">
+                    <thead class="thead-dark bg-success">
+                        <tr>
+                            <th scope="col" class="text-nowrap text-white"> N°</th>
+                            <th scope="col" class="text-nowrap text-white"> LOCALIDAD ORIGEN</th>
+                            <th scope="col" class="text-nowrap text-white"> LOCALIDAD DESTINO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($associate->organization->routes as $route)
+                        <tr>
+                            <th scope="row">{{$loop->iteration}}</th>
+                            <td style="text-transform: uppercase;"> <strong>Provincia:</strong> {{
+                                $route->origin->province }}<strong> -- Ciudad: </strong> {{ $route->origin->municipality
+                                }}</td>
+                            <td style="text-transform: uppercase;"> <strong>Provincia:</strong> {{
+                                $route->destination->province }}<strong> -- Ciudad:
+                                </strong>{{$route->destination->municipality}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <br>
+        </div>
+        @else
+        <div class="col-md-12">
+            <div class="alert alert-warning">
+                El asociado no tiene rutas registradas.
+            </div>
+        </div>
+        @endif
+    </div>
+
     @endif
     <hr>
 </section>
