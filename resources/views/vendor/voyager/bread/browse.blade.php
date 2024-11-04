@@ -172,6 +172,14 @@
                                                         {{ date('d/m/Y H:i', strtotime($data->{$row->field})) }} <br>
                                                         <small>{{ \Carbon\Carbon::parse($data->{$row->field})->diffForHumans() }}</small>
                                                     @endif
+
+                                                @elseif(($row->type == 'user_id'))
+                                                    @php
+                                                         $user = \App\Models\User::find($data->{$row->field});
+                                                    @endphp
+ 
+                                                    {{ $user ? $user->name : '' }}
+                                                    
                                                 @elseif($row->type == 'checkbox')
                                                     @if(property_exists($row->details, 'on') && property_exists($row->details, 'off'))
                                                         @if($data->{$row->field})
@@ -251,6 +259,7 @@
                                                     @else
                                                         {{ trans_choice('voyager::media.files', 0) }}
                                                     @endif
+                                                
                                                 @else
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
                                                     <span>{{ $data->{$row->field} }}</span>

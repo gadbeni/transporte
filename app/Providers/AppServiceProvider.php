@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use TCG\Voyager\Facades\Voyager;
+use App\FormFields\UserIdFormField;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        Voyager::addFormField(UserIdFormField::class);
     }
 
     /**

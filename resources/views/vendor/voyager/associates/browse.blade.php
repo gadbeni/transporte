@@ -252,6 +252,12 @@
                                                     @else
                                                         {{ trans_choice('voyager::media.files', 0) }}
                                                     @endif
+                                                @elseif(($row->type == 'user_id'))
+                                                    @php
+                                                            $user = \App\Models\User::find($data->{$row->field});
+                                                    @endphp
+    
+                                                    {{ $user ? $user->name : '' }}
                                                 @else
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
                                                     <span>{{ $data->{$row->field} }}</span>

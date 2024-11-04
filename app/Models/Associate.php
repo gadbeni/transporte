@@ -16,10 +16,15 @@ class Associate extends Model
         'full_name',
         'ci',
         'expedition_ci',
+        'imagen',
+        'user_id',
+        'active',
+        'organization_id',
         'created_at',
     ];
-    
-    public function organization(){
+
+    public function organization()
+    {
         return $this->belongsTo(Organization::class);
     }
 

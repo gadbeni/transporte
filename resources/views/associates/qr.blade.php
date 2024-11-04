@@ -28,9 +28,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 700px;
+    /* width: 700px;
     height: 700px;
-    background-image: url('{{ asset('images/img-Qr.png') }}');
+    background-image: url('{{ asset('images/img-Qr.png') }}'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -46,13 +46,21 @@
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
 <script>
+@if(isset($associate))
+    let name = @json($associate->full_name);
+    name = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Elimina tildes
+                .replace(/\s+/g, '_'); // Reemplaza espacios por _
+@else
+    let name = 'default';
+@endif
+
 document.getElementById('download').addEventListener('click', function() {
     let node = document.querySelector('.qr');
-
+    
     domtoimage.toPng(node)
         .then(function (dataUrl) {
             let link = document.createElement('a');
-            link.download = 'qr.png';
+            link.download = `${name}_qr.png`;
             link.href = dataUrl;
             link.click();
         })
