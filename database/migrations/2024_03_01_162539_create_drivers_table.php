@@ -33,6 +33,8 @@ return new class extends Migration
             $table->date('expiration_date');
             // activo
             $table->boolean('active')->default(true);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_updated_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

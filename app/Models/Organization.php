@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -31,6 +32,16 @@ class Organization extends Model
     public function routes()
     {
         return $this->belongsToMany(Route::class, 'organization_route')
-        ->withPivot('shudown_resolution');
+            ->withPivot('shudown_resolution');
+    }
+
+    public function scopeCurrentUser($query)
+    {
+        if (Auth::user()->hasRole('admin')) {
+            $query = null;
+        } else {
+            $query->where('user_id', Auth::user()->id);
+        }
+        return $query;
     }
 }

@@ -16,21 +16,21 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             // ------------------ Datos del operador ------------------
-            
+
             //tipo de afiliacion
             $table->string('affiliation_type');
             //nit
-            $table->string('nit');
+            $table->string('nit')->nullable();
             //rubro
-            $table->string('business');
+            $table->string('business')->nullable();
             //telefono
-            $table->string('phone');
+            $table->string('phone')->nullable();
 
             // ------------------ Persona Juridica ------------------
             //persona juridica
             $table->string('legal_name');
             //numero de registro
-            $table->string('legal_number');
+            $table->string('legal_number')->nullable();
             //fecha
             $table->date('legal_date');
             // ------------------ Dominio Legal ------------------
@@ -54,8 +54,10 @@ return new class extends Migration
             $table->string('representative_email')->nullable();
             // Nro poder
             $table->string('representative_power_number')->nullable();
-            
-            
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_updated_id')->nullable();
+
             // ------------------ Control database ------------------
             //activo
             $table->boolean('active')->default(true);
