@@ -30,8 +30,16 @@ class Route extends Model
 
     public function getFullRouteAttribute()
     {
-        $origin = strtoupper($this->origin->municipality);
-        $destination = strtoupper($this->destination->municipality);
+        if ($this->origin) {
+            $origin = strtoupper($this->origin->municipality);
+        } else {
+            $origin = "No encontrado o eliminado";
+        }
+        if ($this->destination) {
+            $destination = strtoupper($this->destination->municipality);
+        } else {
+            $destination = "No encontrado o eliminado";
+        }
         return "{$origin} - {$destination}";
     }
     public function organizations()

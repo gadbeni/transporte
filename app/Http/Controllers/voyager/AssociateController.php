@@ -25,10 +25,14 @@ class AssociateController extends VoyagerBaseController
         //Obtener la organización del asociado con las rutas asociadas
         $organization = $associate->organization()->with('routes')->first();
 
-        //Encontrar las rutas que no están asociadas con la organización del asociado
-        $routes = Route::whereDoesntHave('organizations', function ($query) use ($organization) {
-            $query->where('organizations.id', $organization->id);
-        })->get();
+        if ($organization) {
+            //Encontrar las rutas que no están asociadas con la organización del asociado
+            $routes = Route::whereDoesntHave('organizations', function ($query) use ($organization) {
+                $query->where('organizations.id', $organization->id);
+            })->get();
+        } else {
+            $routes = null;
+        }
 
         if (!$associate->active) {
             $error = 'El asociado no se encuentra activo';
